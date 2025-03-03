@@ -33,7 +33,7 @@ jobs:
       run: msbuild ${{env.SOLUTION_FILE_PATH}} /p:Configuration=${{env.BUILD_CONFIGURATION}}
 
     - name: Archive build
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         name: airplay2-win-binaries
         path: '**/bin/${{env.BUILD_CONFIGURATION}}/**'
