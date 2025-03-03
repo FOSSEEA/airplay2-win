@@ -36,4 +36,12 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: airplay2-win-binaries
-        path: '**/bin/${{env.BUILD_CONFIGURATION}}/**'
+        path: |
+          # 标准 C++ 项目路径
+          **/$(Platform)/${{ env.BUILD_CONFIGURATION }}/**/*.exe
+          **/$(Platform)/${{ env.BUILD_CONFIGURATION }}/**/*.dll
+          **/$(Platform)/${{ env.BUILD_CONFIGURATION }}/**/*.pdb
+          
+          # 兼容变体路径
+          **/x64/${{ env.BUILD_CONFIGURATION }}/**/*
+          **/ARM64/${{ env.BUILD_CONFIGURATION }}/**/*
